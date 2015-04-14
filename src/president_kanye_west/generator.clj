@@ -1,4 +1,4 @@
-(ns president-kanye-west.core)
+(ns president-kanye-west.generator)
 
 (defn foo
   "I don't do a whole lot."
