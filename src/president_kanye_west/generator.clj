@@ -1,4 +1,8 @@
-(ns president-kanye-west.generator)
+(ns president-kanye-west.generator
+  (:require [twitter.api.restful :as twitter]
+            [twitter.oauth :as twitter-oauth]
+            [overtone.at-at :as overtone]
+            [environ.core :refer [env]]))
 
 (defn word-chain
   "Generate a chain of words from our corpus"
@@ -74,5 +78,25 @@
   (let [text (generate-text (-> prefix-list shuffle first) functional-president-west)]
     (end-at-last-punctuation text)))
 
+(def my-creds (twitter-oauth/make-oauth-creds (env :app-consumer-key)
+                                              (env :app-consumer-secret)
+                                              (env :user-access-token)
+                                              (env :user-access-secret)))
+(defn status-update
+  []
+  (let [tweet (tweet-text)]
+    (println "generated tweet is :" tweet)
+    (println "char count is: " (count tweet))
+    (when (not-empty tweet)
+      (try (twitter/statuses-update :oauth-creds my-creds
+                                    :params {:status tweet})
+           (catch Exception e (println "Error: " (.getMessage e)))))))
 
+(def my-pool (overtone/mk-pool))
 
+(defn -main
+  "Update the status every 4 hours"
+  [& args]
+  (println "Started up")
+  (println (tweet-text))
+  (overtone/every (* 1000 60 60 4) #(println (status-update)) my-pool))
