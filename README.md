@@ -1,10 +1,8 @@
-# president-kanye-west
+# Kanye West for President 2016
 
-A Clojure library designed to ... well, that part is up to you.
+A silly little Twitter bot which learns from Kanye West lyrics and United States presidential inaugural addresses to create mind-blowing tweets.
 
-## Usage
-
-FIXME
+Follow [@KanyeWest2016](https://twitter.com/KanyeWest2016) for the salient details!
 
 ## License
 
