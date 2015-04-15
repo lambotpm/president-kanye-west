@@ -51,3 +51,28 @@
 
 (def files ["inaugural-modern.txt" "kanye-west-lyrics.txt"])
 (def functional-president-west (apply merge-with clojure.set/union (map process-file files)))
+
+;; TODO update this prefix list with more... presidential things
+;; I think I need to manually go through the Kanye verses a bit
+(def prefix-list ["On this" "My fellow" "For everywhere" "To the" "As we"
+                  "Today, America"])
+
+(defn end-at-last-punctuation
+  "Fix the generated text's punctuation a bit"
+  [text]
+  (let [trimmed-to-last-punct (apply str (re-seq #"[\s\w]+[^.!?,]*[.!?,]" text))
+        trimmed-to-last-word (apply str (re-seq #".*[^a-zA-Z]+" text))
+        result-text (if (empty? trimmed-to-last-punct)
+                      trimmed-to-last-word
+                      trimmed-to-last-punct)
+        cleaned-text (clojure.string/replace result-text #"[,| ]$" ".")]
+    (clojure.string/replace cleaned-text #"\"" "'")))
+
+(defn tweet-text
+  "Randomly choose a prefix from our list and generate our mashup text!"
+  []
+  (let [text (generate-text (-> prefix-list shuffle first) functional-president-west)]
+    (end-at-last-punctuation text)))
+
+
+
