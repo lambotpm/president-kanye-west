@@ -4,6 +4,8 @@ A silly little Twitter bot which learns from Kanye West lyrics and United States
 
 Follow [@KanyeWest2016](https://twitter.com/KanyeWest2016) for the salient details!
 
+Inspired by Carin Meier's [How I Start](https://howistart.org/posts/clojure/1) article on Clojure.
+
 ## License
 
 Copyright © 2015 FIXME
