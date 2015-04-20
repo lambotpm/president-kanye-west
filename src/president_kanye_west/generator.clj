@@ -61,7 +61,7 @@
 (def prefix-list ["On this" "My fellow" "For everywhere" "To the" "As we"
                   "Today, America" "Forty-four Americans" "In reaffirming"
                   "Encouraging responsibility" "America, at"
-                  "May those" "Beyond that" "For Congress,"
+                  "May those" "And so," "For Congress,"
                   "America is" ])
 
 (defn end-at-last-punctuation
