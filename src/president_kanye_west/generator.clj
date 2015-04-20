@@ -59,10 +59,13 @@
 ;; TODO update this prefix list with more... presidential things
 ;; I think I need to manually go through the Kanye verses a bit
 (def prefix-list ["On this" "My fellow" "For everywhere" "To the" "As we"
-                  "Today, America" "Forty-four Americans" "In reaffirming"
+                  "Today, America" "In reaffirming" "We dare"
                   "Encouraging responsibility" "America, at"
                   "May those" "And so," "For Congress,"
-                  "America is" ])
+                  "America is" "The world" "For man" "We dare" "And yet"
+                  "Let every" "This much" "To those" "To our" "Finally, to"
+                  "But neither" "So let" "Let both" "For every" "Even now,"
+                  "They came" "First, justice" "Liberty was" "Justice requires"])
 
 (defn end-at-last-punctuation
   "Fix the generated text's punctuation a bit"
