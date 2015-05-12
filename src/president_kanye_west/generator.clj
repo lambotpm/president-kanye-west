@@ -89,6 +89,7 @@
                                               (env :user-access-token)
                                               (env :user-access-secret)))
 (defn status-update
+  "Generate some mash-up text and send it out to Twitter. Can throw an Exception on failure."
   []
   (let [tweet (tweet-text)]
     (println "generated tweet is :" tweet)
