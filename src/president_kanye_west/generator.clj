@@ -1,3 +1,10 @@
+;;;; generator.clj
+;;;;
+;;;; generates arbitrary sentences from presidential inaugural addresses and
+;;;; kanye west lyrics and tweets them to @KanyeWest2016
+;;;;
+;;;; @author Paul Lambert < lambertington @ gmail.com >
+
 (ns president-kanye-west.generator
   (:require [twitter.api.restful :as twitter]
             [twitter.oauth :as twitter-oauth]
@@ -56,16 +63,18 @@
 (def files ["inaugural-modern.txt" "kanye-west-lyrics.txt"])
 (def functional-president-west (apply merge-with clojure.set/union (map process-file files)))
 
-;; TODO update this prefix list with more... presidential things
-;; I think I need to manually go through the Kanye verses a bit
-(def prefix-list ["On this" "My fellow" "For everywhere" "To the" "As we"
+;; prefixes taken from inaugural-modern.txt -- we want our generated tweets
+;; to sound presidential and then morph into kanye
+(def prefix-list ["On this" "My fellow" "For everywhere" "As we"
                   "Today, America" "In reaffirming" "We dare"
                   "Encouraging responsibility" "America, at"
                   "May those" "And so," "For Congress,"
-                  "America is" "The world" "For man" "We dare" "And yet"
+                  "America is" "The world" "For man" "Recall that" "And yet"
                   "Let every" "This much" "To those" "To our" "Finally, to"
                   "But neither" "So let" "Let both" "For every" "Even now,"
-                  "They came" "First, justice" "Liberty was" "Justice requires"])
+                  "They came" "First, justice" "Liberty was" "Justice requires"
+                  "We honor" "For as" "Our challenges" "What is"
+                  "Our Founding" "Those ideals" "Where the" ])
 
 (defn end-at-last-punctuation
   "Fix the generated text's punctuation a bit"
