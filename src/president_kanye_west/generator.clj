@@ -6,6 +6,7 @@
 ;;;; @author Paul Lambert < lambertington @ gmail.com >
 
 (ns president-kanye-west.generator
+  (:gen-class)
   (:require [twitter.api.restful :as twitter]
             [twitter.oauth :as twitter-oauth]
             [overtone.at-at :as overtone]
