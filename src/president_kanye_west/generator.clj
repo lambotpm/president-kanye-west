@@ -60,7 +60,8 @@
   (text->word-chain
    (slurp (clojure.java.io/resource fname))))
 
-(def files ["inaugural-modern.txt" "kanye-west-lyrics.txt"])
+(def files ["inaugural-modern.txt" "kanye-west-lyrics.txt" "erowid-data.txt"])
+;; (def files ["inaugural-modern.txt" "erowid-data.txt"])
 (def functional-president-west (apply merge-with clojure.set/union (map process-file files)))
 
 ;; prefixes taken from inaugural-modern.txt -- we want our generated tweets
@@ -115,4 +116,4 @@
   [& args]
   (println "Started up")
   (println (tweet-text))
-  (overtone/every (* 1000 60 60 4) #(println (status-update)) my-pool))
+  (overtone/every (* 1000 60 60 12) #(println (status-update)) my-pool))
